@@ -19,22 +19,22 @@ with DAG(
 ) as dag:
     data_download = BashOperator(
         task_id="data_download",
-        bash_command="python3 /home/mlserv/mlops-final/scripts/data_download.py",
+        bash_command="python /home/mlserv/mlops-final/scripts/data_download.py",
         dag=dag,
     )
     data_preprocess = BashOperator(
         task_id="data_preprocess",
-        bash_command="python3 /home/mlserv/mlops-final/scripts/data_preprocess.py",
+        bash_command="python /home/mlserv/mlops-final/scripts/data_preprocess.py",
         dag=dag,
     )
     model_train = BashOperator(
         task_id="model_train",
-        bash_command="python3 /home/mlserv/mlops-final/scripts/model_train.py",
+        bash_command="python /home/mlserv/mlops-final/scripts/model_train.py",
         dag=dag,
     )
     model_test = BashOperator(
         task_id="model_test",
-        bash_command="python3 /home/mlserv/mlops-final/scripts/model_test.py",
+        bash_command="python /home/mlserv/mlops-final/scripts/model_test.py",
         dag=dag,
     )
     data_download >> data_preprocess >> model_train >> model_test

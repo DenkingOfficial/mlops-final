@@ -120,14 +120,14 @@ x_train_tfidf = tfidf.fit_transform(x_train)
 x_test_tfidf = tfidf.transform(x_test)
 
 
-with open(os.path.join(BASE_DIR, "./data/x_train_tfidf.pkl", "wb")) as f:
+with open(os.path.join(BASE_DIR, "data/x_train_tfidf.pkl", "wb")) as f:
     pickle.dump(x_train_tfidf, f)
 
-with open(os.path.join(BASE_DIR, "./data/x_test_tfidf.pkl", "wb")) as f:
+with open(os.path.join(BASE_DIR, "data/x_test_tfidf.pkl", "wb")) as f:
     pickle.dump(x_test_tfidf, f)
 
-with open(os.path.join(BASE_DIR, "./data/y_train.pkl", "wb")) as f:
+with open(os.path.join(BASE_DIR, "data/y_train.pkl", "wb")) as f:
     pickle.dump(y_train, f)
 
-with open(os.path.join(BASE_DIR, "./data/y_test.pkl", "wb")) as f:
+with open(os.path.join(BASE_DIR, "data/y_test.pkl", "wb")) as f:
     pickle.dump(y_test, f)
