@@ -1,10 +1,15 @@
 import pickle
 from sklearn.metrics import accuracy_score, f1_score
+import os
 
-model = pickle.load(open("./models/model.pkl", "rb"))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-x_test_tfidf = pickle.load(open("./data/x_test_tfidf.pkl", "rb"))
-y_test = pickle.load(open("./data/y_test.pkl", "rb"))
+model = pickle.load(open(os.path.join(BASE_DIR, "./models/model.pkl"), "rb"))
+
+x_test_tfidf = pickle.load(
+    open(os.path.join(BASE_DIR, "./data/x_test_tfidf.pkl"), "rb")
+)
+y_test = pickle.load(open(os.path.join(BASE_DIR, "./data/y_test.pkl"), "rb"))
 
 y_pred = model.predict(x_test_tfidf)
 print(

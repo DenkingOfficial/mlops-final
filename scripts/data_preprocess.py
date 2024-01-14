@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+import os
 from sklearn.model_selection import train_test_split
 import nltk
 from nltk.tokenize import word_tokenize
@@ -9,13 +10,15 @@ from tqdm import tqdm
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 tqdm.pandas()
 nltk.download("wordnet")
 nltk.download("punkt")
 nltk.download("stopwords")
 
-df = pd.read_csv("./data/train.csv")
+df = pd.read_csv(os.path.join(BASE_DIR, "data/train.csv"))
 
 emoji_pattern = re.compile(
     "["
@@ -117,14 +120,14 @@ x_train_tfidf = tfidf.fit_transform(x_train)
 x_test_tfidf = tfidf.transform(x_test)
 
 
-with open("./data/x_train_tfidf.pkl", "wb") as f:
+with open(os.path.join(BASE_DIR, "./data/x_train_tfidf.pkl", "wb")) as f:
     pickle.dump(x_train_tfidf, f)
 
-with open("./data/x_test_tfidf.pkl", "wb") as f:
+with open(os.path.join(BASE_DIR, "./data/x_test_tfidf.pkl", "wb")) as f:
     pickle.dump(x_test_tfidf, f)
 
-with open("./data/y_train.pkl", "wb") as f:
+with open(os.path.join(BASE_DIR, "./data/y_train.pkl", "wb")) as f:
     pickle.dump(y_train, f)
 
-with open("./data/y_test.pkl", "wb") as f:
+with open(os.path.join(BASE_DIR, "./data/y_test.pkl", "wb")) as f:
     pickle.dump(y_test, f)
